@@ -5,16 +5,15 @@ const app = express();
 app.get("/", function(req, res){
     res.send("hello World")
 });
-app.get("/user", function(req, res){
+app.get("/user/:nome/sobrenome/:sobrenome", function(req, res){
     res.send({
-        nome: "José"
+        nome: req.params.nome,
+        sobrenome: req.params.sobrenome,
     })
 });
-app.delete("/user", function(req, res){
-    res.send({
-        nome: "José Deletado"
-    })
-});
+
+
+
 app.listen(8080, function(){
     console.log("Servidor rodando")
 })
