@@ -10,7 +10,7 @@ model User{
     cpf         String      @unique
     phone       String
     password    String
-    typerUser   Int
+    typeUser   Int
     createdAt   DateTime    @default(now())
     updateAt    DateTime    @updatedAt
 }

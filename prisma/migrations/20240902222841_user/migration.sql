@@ -6,7 +6,7 @@ CREATE TABLE "User" (
     "cpf" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "typerUser" INTEGER NOT NULL,
+    "typeUser" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updateAt" TIMESTAMP(3) NOT NULL,
 

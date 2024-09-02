@@ -1,5 +1,5 @@
-import { PrismaClient } from '@prisma/client';
 import { Router } from 'express';
+import { createUser, getUsers } from './user.service.js';
 
 const userRouter = Router();
 
@@ -7,14 +7,14 @@ const router = Router();
 
 userRouter.use('/user', router);
 
-router.get('/', async function (req, res) {
-  const prisma = new PrismaClient();
-  const users = await prisma.user.findMany();
+router.get('/', async (req, res) => {
+  const users = await getUsers();
   res.send(users);
 });
 
-router.get('/:nome', function (req, res) {
-  res.send('Nome do Usuario');
+router.post('/', async (req, res) => {
+  const user = await createUser(req.body);
+  res.send('Deu Certo');
 });
 
 export default userRouter;
