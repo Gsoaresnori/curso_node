@@ -1,4 +1,4 @@
-const express = require("express");
+import express from 'express';
 
 const app = express();
 
@@ -11,9 +11,6 @@ app.get("/user/:nome/sobrenome/:sobrenome", function(req, res){
         sobrenome: req.params.sobrenome,
     })
 });
-
-
-
 app.listen(8080, function(){
     console.log("Servidor rodando")
 })
