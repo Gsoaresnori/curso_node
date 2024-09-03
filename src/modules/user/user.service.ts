@@ -12,7 +12,7 @@ export const getUsers = async (): Promise<UserModel[]> => {
     throw new NotFoundException('User');
   }
 
-  return;
+  return users;
 };
 
 export const createUser = async (body: UserInsertDTO): Promise<UserModel> => {

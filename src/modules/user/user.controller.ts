@@ -6,11 +6,8 @@ import { NotFoundException } from '@exceptions/not-found-exceptions';
 import { ReturnError } from '@exceptions/dtos/return-error.dto';
 
 const userRouter = Router();
-
 const router = Router();
-
 userRouter.use('/user', router);
-
 router.get('/', async (_, res: Response): Promise<void> => {
   const users = await getUsers().catch((error) => {
     if (error instanceof NotFoundException) {
@@ -23,8 +20,10 @@ router.get('/', async (_, res: Response): Promise<void> => {
 });
 
 router.post('/', async (req: Request<undefined, undefined, UserInsertDTO>, res: Response): Promise<void> => {
-  const user = await createUser(req.body);
-  res.send('Deu Certo');
+  const user = await createUser(req.body).catch((error) => {
+    new ReturnError(res, error);
+  });
+  res.send(user);
 });
 
 export default userRouter;
