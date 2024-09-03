@@ -1,6 +1,7 @@
 import { Request, Response, Router } from 'express';
 import { createUser, getUsers } from './user.service';
 import { UserInsertDTO } from './dtos/user-insert.dto';
+import { Prisma } from '@prisma/client';
 
 const userRouter = Router();
 
