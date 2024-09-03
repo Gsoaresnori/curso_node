@@ -3,6 +3,7 @@ import { createUser, getUsers } from './user.service';
 import { UserInsertDTO } from './dtos/user-insert.dto';
 import { Prisma } from '@prisma/client';
 import { NotFoundException } from '@exceptions/not-found-exceptions';
+import { ReturnError } from '@exceptions/dtos/return-error.dto';
 
 const userRouter = Router();
 
@@ -15,7 +16,7 @@ router.get('/', async (_, res: Response): Promise<void> => {
     if (error instanceof NotFoundException) {
       res.status(204);
     } else {
-      res.status(500).send(error.message);
+      new ReturnError(res, error);
     }
   });
   res.send(users);
